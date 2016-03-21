@@ -29,16 +29,34 @@
 			return $this->_connection;
 		}
 
-		private function __clone() {
-			// Keeping the body empty will not allow cloning the class object as we are following the singleton pattern
-		}
-
 		public function closeDbConnection() {
 			if (isset(self::$_instance)) {
 				mysqli_close($this->_connection);
 				unset(self::$_instance);
 			}
 		}
+
+		private function __clone() {
+			// Keeping the body empty will not allow cloning the class object as we are following the singleton pattern
+		}
+
+		public function query($sql) {
+			$result = mysqli_query($this->_connection, $sql);
+			$this->confirmQuery($result);
+
+			return $result;
+		}
+
+		private function confirmQuery($result) {
+			if (!$result) {
+				trigger_error("Connection Error" . mysqli_error(), E_USER_ERROR);
+			}
+		}
+
+		public function prepSqlString($str) {
+			return mysqli_real_escape_string($this->_connection, $str);
+		}
+
 	}
 
 	$test = MySqlDatabase::getDbInstance();
