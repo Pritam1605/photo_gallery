@@ -12,5 +12,4 @@ SQL;
 SQL;
 	$result = $db->query($sql);
 	pp($db->fetch_array($result)[1]);
-
 ?>
