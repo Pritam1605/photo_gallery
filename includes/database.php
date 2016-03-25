@@ -50,7 +50,7 @@
 		}
 
 		public function fetchArray($result_set) {
-			return mysqli_fetch_array($result_set);
+			return mysqli_fetch_array($result_set, MYSQLI_ASSOC);
 		}
 
 		public function escapeValue($str) {
