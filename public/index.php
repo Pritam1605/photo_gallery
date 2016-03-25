@@ -1,15 +1,37 @@
 <?php
-	require_once __DIR__ . '/../includes/database.php';
+	require_once __DIR__ . '/../includes/functions.php';
+	// require_once __DIR__ . '/../includes/database.php';
+	// require_once __DIR__ . '/../includes/user.php';
 
-	$db = MySqlDatabase::getDbInstance();
+	//$db = MySqlDatabase::getDbInstance();
 
-	$sql = <<<SQL
-		Insert INTO user VALUES(10, 'pritam1605', 'pritam', 'pritam', 'bohra');
-SQL;
+// 	$sql = <<<SQL
+// 		Insert INTO user(username, password, first_name, last_name) VALUES
+// 			('pritam1605', 'pritam', 'pritam', 'bohra'),
+// 			('pritamkumar', 'pritamkumar', 'pritamkumar', 'bohra'),
+// 			('davidhussey', 'david', 'hussey', 'dave'),
+// 			('mahimsd', 'msd', 'Mahendra', 'Dhoni'),
+// 			('Sachin', 'srt', 'Sachin', 'tendulkar');
+// SQL;
+// 	$result = $db->query($sql);
+// 	$sql = <<<SQL
+// 		SELECT * FROM user;
+// SQL;
+// 	$result = $db->query($sql);
+// 	pp($db->fetchArray($result));
 
-	$sql = <<<SQL
-		SELECT * FROM user;
-SQL;
-	$result = $db->query($sql);
-	pp($db->fetch_array($result)[1]);
+	// $user = new User();
+	// $result = User::findAll();
+	// pp($result);
+	// while ($row = $db->fetchArray($result)) {
+	// 	echo $row['username'], '<br />';
+	// }
+
+	$users = User::FindAll();
+	foreach ($users as $user) {
+		pp($user->username);
+	}
+
+	$user = User::findById(1);
+	pp($user);
 ?>

@@ -31,4 +31,25 @@
 		}
 	}
 
+	spl_autoload_register(function($class_name) {
+		$class_name = strtolower($class_name);
+		$path = __DIR__ . "/../includes/{$class_name}.php";
+
+		if (file_exists($path)) {
+			require_once $path;
+		} else {
+			die("The file {$path} not found");
+		}
+	});
+
+	/*function __autoload($class_name) {
+		$class_name = strtolower($class_name);
+		$path = __DIR__ . "/../includes/{$class_name}.php";
+
+		if (file_exists($path)) {
+			require_once $path;
+		} else {
+			die("The file {$path} not found");
+		}
+	}*/
 ?>
