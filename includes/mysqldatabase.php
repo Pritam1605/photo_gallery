@@ -28,7 +28,7 @@
 		public function closeDbConnection() {
 			if (isset(self::$_instance)) {
 				mysqli_close($this->_connection);
-				unset(self::$_instance);
+				self::$_instance = NULL;			// can't use unset due to the limitations Refer http://php.net/manual/en/function.unset.php
 			}
 		}
 
