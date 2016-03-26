@@ -50,12 +50,11 @@
 			unset($_SESSION['user_id']);
 			unset($this->user_id);
 			$this->_logged_in = FALSE;
+			self::$_instance = NULL;			// can't use unset due to the limitations Refer http://php.net/manual/en/function.unset.php
 		}
 
 		private function __clone() {
 			// empty body will not allow the object cloning
 		}
 	}
-
-
 ?>

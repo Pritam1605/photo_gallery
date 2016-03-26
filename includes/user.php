@@ -58,11 +58,19 @@ SQL;
 			return $obj;
 		}
 
+		static public function authenticate($username = "", $password = "") {
+			$db = MySqlDatabase::getDbInstance();
+			$username = $db->escapeValue($username);
+			$password = $db->escapeValue($password);
 
-
-
+			$sql = <<<SQL
+				SELECT *
+				FROM user
+				WHERE username = '{$username}' AND password = '{$password}'
+				LIMIT 1;
+SQL;
+			$object_array = self::findBySql($sql);
+			return !empty($object_array) ? array_shift($object_array) : FALSE;
+		}
 	}
-
-
-
 ?>
