@@ -3,9 +3,9 @@
 
 	// Handeling Session
 	$session = Session::getSessionInstance();
-	// if ($session->isLoggedIn()) {
-	// 	redirect_to('index.php');
-	// }
+	if ($session->isLoggedIn()) {
+		redirect_to('index.php');
+	}
 
 	$message = "";
 
@@ -31,35 +31,21 @@
 		$username = $password = "";
 	}
 ?>
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>Admin Login</title>
-		<link rel="stylesheet" type="text/css" href="../stylesheets/main.css">
-	</head>
-	<body>
-		<div id="header">
-			<h1>Photo Gallery</h1>
-		</div>
-		<div id="main">
-			<?php echo output_message($message); ?>
-			<h3>Staff Login</h3>
+<?php loadLayoutTemplate('admin_header'); ?>
+	<div id="main">
+		<?php echo output_message($message); ?>
+		<h3>Staff Login</h3>
 
-			<form action="login.php" method="post">
-				<label for="username">Username :
-					<input type="text" id="username" name="username" value="<?php echo htmlentities($username); ?>"/>
-				</label>
-				<br/>
-				<label for="password">Password :
-					<input type="password" id="password" name="password" value="<?php echo htmlentities($password); ?>"/>
-				</label>
-				<br />
-				<input type="submit" name="submit" value="Submit"/>
-			</form>
-		</div>
-		<div id="footer">
-			<p> photogallery.com Copyrights <?php echo  date('Y', time()); ?>, Pritam Bohra
-		</div>
-	</body>
-</html>
+		<form action="login.php" method="post">
+			<label for="username">Username :
+				<input type="text" id="username" name="username" value="<?php echo htmlentities($username); ?>"/>
+			</label>
+			<br/>
+			<label for="password">Password :
+				<input type="password" id="password" name="password" value="<?php echo htmlentities($password); ?>"/>
+			</label>
+			<br />
+			<input type="submit" name="submit" value="Submit"/>
+		</form>
+	</div>
+<?php loadLayoutTemplate('footer'); ?>

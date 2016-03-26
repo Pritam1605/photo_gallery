@@ -42,6 +42,10 @@
 		}
 	});
 
+	function loadLayoutTemplate($file_name = "") {
+		include SITE_ROOT . DS . 'public' . DS . 'layout_template' . DS . $file_name . '.php';
+	}
+
 	/*function __autoload($class_name) {
 		$class_name = strtolower($class_name);
 		$path = __DIR__ . "/../includes/{$class_name}.php";
