@@ -1,71 +1,24 @@
 <?php
-	require_once LIB_PATH . DS . 'mysqldatabase.php';
+	require_once 'initialize.php';
 
-	class User {
+	class User extends DatabaseObject {
+
+		static protected $table_name = 'user';
 		public $id;
 		public $username;
 		public $password;
 		public $first_name;
 		public $last_name;
 
-		static public function findAll() {
-			// gets the database connection
-			$db = MySqlDatabase::getDbInstance();
-			$sql = <<<SQL
-				SELECT *
-				FROM user
-				ORDER BY id ASC;
-SQL;
-			return self::findBySql($sql);
-		}
-
-		static public function findById($id) {
-			$db = MySqlDatabase::getDbInstance();
-			$sql = <<<SQL
-				SELECT *
-				FROM user
-				WHERE id = {$id}
-				LIMIT 1;
-SQL;
-
-			$object_array = self::findBySql($sql);
-			return !empty($object_array) ? array_shift($object_array) : FALSE;
-		}
-
-		static public function findBySql($sql) {
-			$db = MySqlDatabase::getDbInstance();
-			$result_set = $db->query($sql);
-
-			// returns the result set as an array of objects
-			$object_array = array();
-			while($row = $db->fetchArray($result_set)) {
-				$object_array[] = self::_instantiate($row);
-			}
-
-			return $object_array;
-		}
-
-		static private function _instantiate($record) {
-			$obj = new self();
-
-			if (is_array($record)) {
-				foreach ($record as $attribute => $value) {
-					if (property_exists($obj, $attribute)) {
-						$obj->$attribute = $value;
-					}
-				}
-			}
-			return $obj;
-		}
-
 		static public function authenticate($username = "", $password = "") {
 			$db = MySqlDatabase::getDbInstance();
+			$table_name = self::$table_name;		// PHP doesn't allow heredoc to use static variable directly
 			$username = $db->escapeValue($username);
 			$password = $db->escapeValue($password);
 
 			$sql = <<<SQL
 				SELECT *
-				FROM user
+				FROM {$table_name}
 				WHERE username = '{$username}' AND password = '{$password}'
 				LIMIT 1;
 SQL;

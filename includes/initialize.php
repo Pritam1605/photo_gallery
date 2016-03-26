@@ -12,6 +12,7 @@
 	// Loading core objects
 	require_once LIB_PATH . DS . 'mysqldatabase.php';
 	require_once LIB_PATH . DS . 'session.php';
+	require_once LIB_PATH . DS . 'databaseobject.php';
 
 	// Loading classes
 	require_once LIB_PATH . DS . 'user.php';

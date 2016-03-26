@@ -1,7 +1,5 @@
 <?php
-	require_once __DIR__ . '/../includes/functions.php';
-	// require_once __DIR__ . '/../includes/database.php';
-	// require_once __DIR__ . '/../includes/user.php';
+	require_once __DIR__ . '/../includes/initialize.php';
 
 	$db = MySqlDatabase::getDbInstance();
 	$db->closeDbConnection();
@@ -20,12 +18,12 @@
 // 	$result = $db->query($sql);
 // 	pp($db->fetchArray($result));
 
-	// $user = new User();
-	// $result = User::findAll();
-	// pp($result);
-	// while ($row = $db->fetchArray($result)) {
-	// 	echo $row['username'], '<br />';
-	// }
+	$user = new User();
+	$result = User::findAll();
+	//pp($result);
+	foreach ($result as $row) {
+		echo $row->username, '<br/>';
+	}
 
 	// $users = User::FindAll();
 	// foreach ($users as $user) {
