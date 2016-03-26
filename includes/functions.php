@@ -42,8 +42,8 @@
 		}
 	});
 
-	function loadLayoutTemplate($file_name = "") {
-		include SITE_ROOT . DS . 'public' . DS . 'layout_template' . DS . $file_name . '.php';
+	function loadLayoutTemplate($template = "") {
+		include SITE_ROOT . DS . 'public' . DS . 'layout_template' . DS . $template . '.php';
 	}
 
 	/*function __autoload($class_name) {
