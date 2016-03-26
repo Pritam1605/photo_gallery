@@ -1,6 +1,5 @@
 <?php
-	require_once __DIR__ . '/../../includes/session.php';
-	require_once __DIR__ . '/../../includes/functions.php';
+	require_once __DIR__ . '/../../includes/initialize.php';
 
 	$session = Session::getSessionInstance();
 	if (!$session->isLoggedIn()) {

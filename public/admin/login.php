@@ -1,14 +1,11 @@
 <?php
-	require_once __DIR__ . '/../../includes/mysqldatabase.php';
-	require_once __DIR__ . '/../../includes/functions.php';
-	require_once __DIR__ . '/../../includes/session.php';
-	require_once __DIR__ . '/../../includes/user.php';
+	require_once __DIR__ . '/../../includes/initialize.php';
 
 	// Handeling Session
 	$session = Session::getSessionInstance();
-	if ($session->isLoggedIn()) {
-		redirect_to('index.php');
-	}
+	// if ($session->isLoggedIn()) {
+	// 	redirect_to('index.php');
+	// }
 
 	$message = "";
 
