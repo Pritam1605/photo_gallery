@@ -7,7 +7,7 @@
 		static private $_instance;
 
 		static public function getSessionInstance() {
-			if (!isset(self::$_instance)) {
+			if (!is_null(self::$_instance)) {
 				self::$_instance = new self();
 			}
 

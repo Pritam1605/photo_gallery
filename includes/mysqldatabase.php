@@ -8,7 +8,7 @@
 
 		static public function getDbInstance() {
 			// Using the Singleton pattern for database connection
-			if (!isset(self::$_instance)) {
+			if (!is_null(self::$_instance)) {
 				self::$_instance = new self();
 			}
 
