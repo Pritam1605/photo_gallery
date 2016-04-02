@@ -2,7 +2,7 @@
 	require_once __DIR__ . '/../../includes/initialize.php';
 
 	// Handeling Session
-	$session = Session::getSessionInstance();
+	$session = Session::getInstance();
 	if ($session->isLoggedIn()) {
 		redirect_to('index.php');
 	}
