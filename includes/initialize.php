@@ -13,7 +13,7 @@
 	require_once LIB_PATH . DS . 'mysqldatabase.php';
 	require_once LIB_PATH . DS . 'session.php';
 	require_once LIB_PATH . DS . 'databaseobject.php';
-
+	require_once LIB_PATH . DS . 'logger.php';
 	// Loading classes
 	require_once LIB_PATH . DS . 'user.php';
 

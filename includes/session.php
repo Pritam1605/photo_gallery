@@ -6,7 +6,7 @@
 		private $_logged_in = FALSE;	// It is private so as not to allow anyone to log the use in by just accessing the variable
 		static private $_instance;
 
-		static public function getSessionInstance() {
+		static public function getInstance() {
 			if (!is_null(self::$_instance)) {
 				self::$_instance = new self();
 			}

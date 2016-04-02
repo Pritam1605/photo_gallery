@@ -4,8 +4,8 @@
 	class Logger {
 
 		static private $_instance;
-		private CONST LOG_FILE = 'log.txt';
-		private CONST FILE_PATH = SITE_ROOT . DS . 'logs' . DS . self::LOG_FILE;
+		CONST LOG_FILE = 'log.txt';
+		CONST FILE_PATH = SITE_ROOT . DS . 'logs' . DS . self::LOG_FILE;
 		private $_handle;
 
 		static public function getInstance() {
@@ -33,8 +33,12 @@
 		public function logAction($action, $message = "") {
 			if ($this->_handle) {
 				$timestamp = strftime("%Y-%m-%d %H:%M:%S", time());
-				$content = $timestamp . "| {$action} : " $username ." logged in \n";
-				$written_content = fwrite($this->_handle, $content);
+				$session = Session::getInstance();
+				$username = User::findById($session->user_id)->username;
+				$content = $timestamp . "| {$action} : {$message} \n";
+				if (is_writable(self::FILE_PATH)) {
+					$written_content = fwrite($this->_handle, $content);
+				}
 			}
 		}
 
