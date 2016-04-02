@@ -8,4 +8,9 @@
 
 	$handle = fopen('logs/log/sog/abc', 'a+');
 
+	$a = 'true';
+	if($a == 'true') {
+		echo "a is true";
+	}
+
 ?>
