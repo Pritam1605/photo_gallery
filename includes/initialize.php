@@ -2,8 +2,9 @@
 
 	// Path Constants
 	defined('DS') ? NULL : define('DS', DIRECTORY_SEPARATOR);
-	defined('SITE_ROOT') ? NULL : define('SITE_ROOT', DS . 'home' . DS . 'pritam'. DS . 'web_server' . DS . 'pritamphp.com' . DS . 'photo_gallery');
-	defined('LIB_PATH') ? NULL : define('LIB_PATH', SITE_ROOT . DS . 'includes');
+	defined('SITE_ROOT') ? NULL : define('SITE_ROOT', dirname(__DIR__));
+	defined('LIB_PATH') ? NULL : define('LIB_PATH', __DIR__);
+	defined('LOG_FILE') ? NULL : define('LOG_FILE', SITE_ROOT . DS . )
 
 	// Loading configs and UTIL functions
 	require_once LIB_PATH . DS . 'config.php';
