@@ -1,7 +1,7 @@
 <?php
 	require_once __DIR__ . '/../../includes/initialize.php';
 
-	$session = Session::getSessionInstance();
+	$session = Session::getInstance();
 	if (!$session->isLoggedIn()) {
 		redirect_to('login.php');
 	}
