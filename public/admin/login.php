@@ -19,7 +19,10 @@
 			$login_user = User::authenticate($username, $password);
 			if ($login_user) {
 				$session->logIn($login_user);
-				$log->logAction("Login", $login_user->username);
+
+				$log = Logger::getInstance();
+				$log->logAction("Login", $login_user->username . ' logged in.');
+
 				redirect_to('index.php');
 			} else {
 				$message = 'Username/Password do not match';

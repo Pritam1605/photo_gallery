@@ -7,7 +7,7 @@
 		static private $_instance;
 
 		static public function getInstance() {
-			if (!is_null(self::$_instance)) {
+			if (!isset(self::$_instance)) {
 				self::$_instance = new self();
 			}
 

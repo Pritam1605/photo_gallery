@@ -8,7 +8,7 @@
 
 		static public function getDbInstance() {
 			// Using the Singleton pattern for database connection
-			if (!is_null(self::$_instance)) {
+			if (!isset(self::$_instance)) {
 				self::$_instance = new self();
 			}
 
@@ -16,7 +16,7 @@
 		}
 
 		private function __construct() {
-			// Won't let create unnecessary objects
+			// Private = Won't let create unnecessary objects
 			$this->_connection = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 
 			if (mysqli_connect_errno()) {
