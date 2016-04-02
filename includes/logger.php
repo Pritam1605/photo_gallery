@@ -38,16 +38,18 @@
 
 			if ($this->_handle) {
 				$timestamp = strftime("%Y-%m-%d %H:%M:%S", time());
-				$session = Session::getInstance();
-				$username = User::findById($session->user_id)->username;
-				pp($timestamp);
-				pp($username);
 				$content = $timestamp . "| {$action} : {$message}\n";
 
 				if (is_writable(LOG_PATH . DS . self::LOGIN_FILE)) {
 					$written_content = fwrite($this->_handle, $content);
+				} else {
+					die('Log file is not writable');
 				}
 			}
+		}
+
+		public function eraseLogIfle() {
+			
 		}
 
 
