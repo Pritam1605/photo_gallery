@@ -25,22 +25,21 @@
 <?php loadLayoutTemplate('admin_header'); ?>
 	<div id="main">
 		<?php echo output_message($message); ?>
-		<h3>Admin Log</h3>
+		<h3>Log File </h3>
 		<div>
-			<table>
+			<ul>
 				<?php
 					$log = Logger::getInstance();
 					$log_records = $log->readLog();
 				?>
 				<?php foreach ($log_records as $log_record) : ?>
-				<tr>
-					<td><?php echo $log_record; ?></td>
-				</tr>
+				<li><?php echo $log_record; ?></li>
 				<?php endforeach; ?>
-			</table>
+			</ul>
 		</div>
 		<div>
-			<a href="logfile.php?clear=true">Clear Log File</a>
+			<strong><a href="index.php">&laquoBack</a></strong>
+			<strong><a href="logfile.php?clear=true">Clear Log File</a></strong>
 		</div>
 	</div>
 <?php loadLayoutTemplate('footer'); ?>

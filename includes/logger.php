@@ -59,9 +59,12 @@
 
 		public function readLog() {
 			$log_record = array();
-			if ($this->_handle) {
+			if ($this->_handle && is_readable(LOG_PATH . DS . self::LOGIN_FILE)) {
 				while(!feof($this->_handle)) {
-					$log_record[] = fgets($this->_handle);
+					$record = fgets($this->_handle);
+					if (trim($record) !== "") {
+						$log_record[] = $record;
+					}
 				}
 			}
 			return $log_record;
