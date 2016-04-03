@@ -9,5 +9,9 @@
 <?php loadLayoutTemplate('admin_header'); ?>
 	<div id="main">
 		<h2>Main</h2>
+		<ul>
+			<li><a href="logfile.php">Logfile</li></a>
+			<li><a href="logout.php">LogOut</li></a>
+		</ul>
 	</div>
 <?php loadLayoutTemplate('footer'); ?>

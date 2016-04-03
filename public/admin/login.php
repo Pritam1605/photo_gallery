@@ -41,14 +41,16 @@
 		<h3>Staff Login</h3>
 
 		<form action="login.php" method="post">
-			<label for="username">Username :
-				<input type="text" id="username" name="username" value="<?php echo htmlentities($username); ?>"/>
-			</label>
-			<br/>
-			<label for="password">Password :
-				<input type="password" id="password" name="password" value="<?php echo htmlentities($password); ?>"/>
-			</label>
-			<br />
+			<table>
+				<tr>
+					<td><label for="username">Username :</label></td>
+					<td><input type="text" id="username" name="username" value="<?php echo htmlentities($username); ?>"/></td>
+				</tr>
+				<tr>
+					<td><label for="password">Password :</label></td>
+					<td><input type="password" id="password" name="password" value="<?php echo htmlentities($password); ?>"/></td>
+				</tr>
+			</table>
 			<input type="submit" name="submit" value="Submit"/>
 		</form>
 	</div>
