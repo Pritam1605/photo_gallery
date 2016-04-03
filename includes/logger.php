@@ -22,8 +22,12 @@
 			/*if (!file_exists(LOG_PATH)) {
 				mkdir(SITE_ROOT . DS . 'logs', 0777, TRUE);
 			}*/
-
+			$is_new = file_exists(LOG_PATH . DS . self::LOGIN_FILE) ? FALSE : TRUE;
 			$this->_handle = fopen(LOG_PATH . DS . self::LOGIN_FILE, 'a+');
+			if ($is_new) {
+				// Makes sure that if the file is new, we change the permission and and assign read and execute permission to GROUP and OTHERs
+				chmod(LOG_PATH . DS . self::LOGIN_FILE, 0755);
+			}
 		}
 
 		public function closeLoggerFile() {
