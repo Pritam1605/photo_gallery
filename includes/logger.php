@@ -48,11 +48,23 @@
 			}
 		}
 
-		public function eraseLogIfle() {
-			
+		public function eraseLogFile() {
+			if ($this->_handle) {
+				if (ftruncate($this->_handle, 0)) {
+					return TRUE;
+				}
+			}
+			return FALSE;
 		}
 
-
+		public function readLog() {
+			$log_record = array();
+			if ($this->_handle) {
+				while(!feof($this->_handle)) {
+					$log_record[] = fgets($this->_handle);
+				}
+			}
+			return $log_record;
+		}
 	}
-
 ?>
