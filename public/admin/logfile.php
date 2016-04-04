@@ -22,11 +22,13 @@
 ?>
 <?php loadLayoutTemplate('admin_header'); ?>
 	<div id="main">
+
 		<?php
 			if (!empty($message)) {
 				echo output_message($message);
 			}
 		?>
+
 		<h3>Log File </h3>
 		<div>
 			<ul>

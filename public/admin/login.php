@@ -35,11 +35,13 @@
 ?>
 <?php loadLayoutTemplate('admin_header'); ?>
 	<div id="main">
+
 		<?php
 			if (!empty($message)) {
 				echo output_message($message);
 			}
 		?>
+
 		<h3>Staff Login</h3>
 
 		<form action="login.php" method="post">
