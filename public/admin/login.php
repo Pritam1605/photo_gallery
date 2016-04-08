@@ -7,8 +7,6 @@
 		redirect_to('index.php');
 	}
 
-	$message = "";
-
 	// Handeling submission
 	if (isset($_POST['submit'])) {
 		if (!empty($_POST['username']) && !empty($_POST['password'])) {
@@ -37,7 +35,11 @@
 ?>
 <?php loadLayoutTemplate('admin_header'); ?>
 	<div id="main">
-		<?php echo output_message($message); ?>
+		<?php
+			if (!empty($message)) {
+				echo output_message($message);
+			}
+		?>
 		<h3>Staff Login</h3>
 
 		<form action="login.php" method="post">

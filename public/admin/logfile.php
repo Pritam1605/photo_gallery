@@ -7,8 +7,6 @@
 		redirect_to('login.php');
 	}
 
-	$message = "";
-
 	if (isset($_GET['clear']) && $_GET['clear'] == 'true') {
 		$username = User::findById($session->user_id)->username;
 
@@ -24,7 +22,11 @@
 ?>
 <?php loadLayoutTemplate('admin_header'); ?>
 	<div id="main">
-		<?php echo output_message($message); ?>
+		<?php
+			if (!empty($message)) {
+				echo output_message($message);
+			}
+		?>
 		<h3>Log File </h3>
 		<div>
 			<ul>
